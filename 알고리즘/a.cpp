@@ -1,41 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+struct Point {
+	int y, x;
+	Point(int y, int x) : y(y), x(x) {};
+	Point() { y = -1; x = -1; };
+	bool operator < (const Point& a) const {
+		return x > a.x;
+	};
+};
+
+priority_queue<Point> pq;
 int main(){
-	int y;
-	bool isFirst = true;
-
-	while (true) {
-		string bar = "--------------------------------\n";
-		char choice = 'x';
-		while (choice != 'y' && choice != 'n') {
-			if (isFirst) {
-				cout << bar << "피라미드를 생성하시겠습니까? (y/n): ";
-			}
-			else {
-				cout << bar << "피라미드를 한번 더 생성하시겠습니까? (y/n): ";
-			}
-			cin >> choice;
-		}
-
-		if (choice == 'n') {
-			break;
-		}
-
-		cout << bar << "생성할 피라미드의 층수를 입력해 주세요: ";
-		cin >> y;
-		cout << bar;
-		for (int i = 0; i < y; i++) {
-			for (int j = 0; j < ( y - 1 ) - i; j++){
-				cout << "  ";
-			}
-			for (int j = 0; j < 1 + i * 2; j++){
-				cout << "* ";
-			}
-			cout << endl;
-		}
-		cout << bar << "생성 완료!" << endl;
-		isFirst = false;
-	}
+	pq.push({ 1, 1 });
+	pq.push({ 2, 2 });
+	pq.push({ 3, 3 });
+	pq.push({ 4, 4 });
+	pq.push({ 5, 5 });
+	pq.push({ 6, 6 });
+	pq.push({ 7, 7 });
+	cout << pq.top().x << endl;
 	return 0;
 }
