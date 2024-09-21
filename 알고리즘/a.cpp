@@ -1,24 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Point {
-	int y, x;
-	Point(int y, int x) : y(y), x(x) {};
-	Point() { y = -1; x = -1; };
-	bool operator < (const Point& a) const {
-		return x > a.x;
-	};
-};
+void test(int arr[]) {
+	arr[1] = 1000;
+}
 
-priority_queue<Point> pq;
+void test1(int arr[3]) {
+	arr[1] = 1000;
+}
+
+void test2(int *arr) {
+	arr[1] = 1000;
+}
+
 int main(){
-	pq.push({ 1, 1 });
-	pq.push({ 2, 2 });
-	pq.push({ 3, 3 });
-	pq.push({ 4, 4 });
-	pq.push({ 5, 5 });
-	pq.push({ 6, 6 });
-	pq.push({ 7, 7 });
-	cout << pq.top().x << endl;
+	int array[3] = { 1,2,3 };
+	test(array);
+	for (int v : array) cout << v << " ";
 	return 0;
 }
