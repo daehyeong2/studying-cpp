@@ -1,32 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> v;
-vector<vector<int>> v2(10, vector<int>(10, 0));
-vector<int> v3[10];
-
-int main(){
-	cout << "v:" << endl;
-	for (int i = 1; i <= 10; i++) {
-		vector<int> temp;
-		for (int j = 1; j <= 10; j++) {
-			temp.push_back(j);
-		}
-		v.push_back(temp);
-	}
-	for (auto a : v) {
-		for (int b : a) {
-			cout << b << " ";
-		}
-		cout << endl;
+void printV(vector<int>& v) {
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i];
 	}
 	cout << endl;
-	cout << "v2:" << endl;
-	for (int i = 0; i < 10; i++) {
-		for (int j = 0; j < 10; j++) {
-			cout << v2[i][j] << " ";
-		}
-		cout << endl;
+}
+
+int main() {
+	int a[3] = { 1,2,3 };
+	vector<int> v;
+	
+	for (int i = 0; i < 3; i++) {
+		v.push_back(a[i]);
 	}
+	do {
+		printV(v);
+	} while (next_permutation(v.begin(), v.end()));
+
+	cout << "------------------" << endl;
+	
+	v.clear();
+
+	for (int i = 2; i >= 0; i--) {
+		v.push_back(a[i]);
+	}
+
+	do {
+		printV(v);
+	} while (prev_permutation(v.begin(), v.end()));
+
 	return 0;
 }
