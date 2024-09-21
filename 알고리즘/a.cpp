@@ -1,35 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-void printV(vector<int>& v) {
-	for (int i = 0; i < v.size(); i++) {
-		cout << v[i];
+int a[3] = {1, 2, 3};
+int n = 3, r = 3;
+void print(){
+	for(int i = 0; i < r; i++){
+		cout << a[i] << " ";
 	}
-	cout << endl;
+	cout << "\n";
 }
-
-int main() {
-	int a[3] = { 1,2,3 };
-	vector<int> v;
-	
-	for (int i = 0; i < 3; i++) {
-		v.push_back(a[i]);
+void makePermutation(int n, int r, int depth){
+	if(r == depth){
+		print();
+		return;
 	}
-	do {
-		printV(v);
-	} while (next_permutation(v.begin(), v.end()));
-
-	cout << "------------------" << endl;
-	
-	v.clear();
-
-	for (int i = 2; i >= 0; i--) {
-		v.push_back(a[i]);
+	for(int i = depth; i < n; i++){
+		cout << i << " : " << depth << "¸¦ ¹Ù²Û´Ù!\n";
+		swap(a[i], a[depth]);
+		makePermutation(n, r, depth + 1);
+		cout << i << " : " << depth << "¸¦ ´Ù½Ã ¹Ù²Û´Ù!\n";
+		swap(a[i], a[depth]);
 	}
-
-	do {
-		printV(v);
-	} while (prev_permutation(v.begin(), v.end()));
-
+	return;
+}
+int main(){
+	makePermutation(n, r, 0);
 	return 0;
 }
