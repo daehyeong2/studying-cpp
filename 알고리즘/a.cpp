@@ -1,50 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void rotate_left_90(vector<vector<int>>& key) {
-	int n = key.size();
-	int m = key[0].size();
-	vector<vector<int>> temp(m, vector<int>(n, 0));
-
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			temp[i][j] = key[j][m - i - 1];
-		}
-	}
-
-	key.resize(m);
-	key[0].resize(n);
-	
-	key = temp;
-	return;
-}
-
-void rotate_right_90(vector<vector<int>>& key) {
-	int n = key.size();
-	int m = key[0].size();
-	vector<vector<int>> temp(m, vector<int>(n, 0));
-
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			temp[i][j] = key[n - j - 1][i];
-		}
-	}
-
-	key.resize(m);
-	key[0].resize(n);
-
-	key = temp;
-	return;
-}
+vector<int> v;
 
 int main() {
-	vector<vector<int>> a = { {1,2,4}, {5,6,7}, {9,0,1} };
-	rotate_left_90(a);
-	for (int i = 0; i < a.size(); i++) {
-		for (int j = 0; j < a[0].size(); j++) {
-			cout << a[i][j] << " ";
-		}
-		cout << "\n";
+	int n = 35;
+	int b = 3;
+
+	while (n > 1) {
+		v.push_back(n % b);
+		n /= b;
+	}
+	if (n == 1) v.push_back(1);
+	reverse(v.begin(), v.end());
+	for (int a : v) {
+		if (a >= 10) cout << char(a + 55);
+		else cout << a;
 	}
 	return 0;
 }
