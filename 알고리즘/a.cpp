@@ -1,37 +1,21 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+const int max_n = 40;
+bool che[max_n + 1]; // 예를 들어 40을 넣었을 때 che[40]이 참조가 되므로 max_n + 1을 넣어야 함.
 
-int n = 5, k = 3;
-
-//void print(vector<int> b) {
-//	for (int i : b) {
-//		cout << i << " ";
-//	}
-//	cout << "\n";
-//}
-//
-//void combi(int start, vector<int> b) {
-//	if (b.size() == k) {
-//		print(b);
-//		return;
-//	}
-//	for (int i = start + 1; i < n; i++) {
-//		b.push_back(i);
-//		combi(i, b);
-//		b.pop_back();
-//	}
-//	return;
-//}
-
-int main() {
-	vector<int> b;
-	//combi(-1, b);
-	for (int i = 0; i < n; i++) {
-		for (int j = i + 1; j < n; j++) {
-			for(int k = j + 1; k < n; k++) {
-				cout << i << " : " << j << " : " << k << "\n";
-			}
+// max_n까지의 소수를 만드는 함수
+vector<int> era(int mx_n){
+	vector<int> v;
+	for(int i = 2; i <= mx_n; i++){
+		if (che[i]) continue;
+		for(int j = 2*i; j <= mx_n; j += i){
+			che[j] = 1;
 		}
 	}
-	return 0;
+	for(int i = 2; i <= mx_n; i++) if(che[i] == 0)v.push_back(i);
+	return v;
+}
+int main(){
+	vector<int> a = era(max_n);
+	for(int i : a) cout << i << " ";
 }
