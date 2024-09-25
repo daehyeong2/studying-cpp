@@ -1,9 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 int main(){
-	int n = 36;
-	int ret = (int)sqrt(n);
-	cout << ret << '\n';
-	return 0;
+	vector<int> v = {1, 2, 3, 4, 5, 6};
+	rotate(v.begin(), v.begin() + 1, v.end());
+	for(int i : v) cout << i << ' ';
 }
